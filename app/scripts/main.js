@@ -4,16 +4,22 @@ class MapState {
     this.state = {
       mode: '',
       color: '',
-      currentToken: null
+      currentToken: null,
+      clickState: 'up'
     };
 
     this.setColor = this.setColor.bind(this);
+    this.setClickState = this.setClickState.bind(this);
     this.getState = this.getState.bind(this);
   }
 
   setColor(color) {
     this.state.mode = 'draw';
     this.state.color = color;
+  }
+
+  setClickState(state) {
+    this.state.clickState = state;
   }
 
   getState() {
@@ -59,11 +65,47 @@ function selectColor() {
 }
 
 function draw() {
-
+  console.log('Drawing!');
 }
 
 function onCanvasInteract(eventType, DOMEvent) {
-  console.log(eventType);
+  const state = app.getState();
+
+  switch(eventType) {
+    case 'mousedown': {
+      app.setClickState('down');
+
+      break;
+    }
+
+    case 'mouseup': {
+      app.setClickState('up');
+
+      break;
+    }
+
+    case 'mousemove': {
+      if (state.clickState === 'down') {
+        draw();
+      }
+      break;
+    }
+
+    case 'mouseover': {
+
+      break;
+    }
+
+    case 'mouseout': {
+      app.setClickState('up');
+      break;
+    }
+
+    case 'click': {
+
+      break;
+    }
+  }
 }
 
 function clearToken() {
@@ -81,21 +123,29 @@ function init() {
     el.addEventListener('click', selectColor.bind(el))
   );
 
-  CANVAS.addEventListener('mousedown', event => {
-    onCanvasInteract('mousedown', event);
-  });
+  CANVAS.addEventListener('mousedown', event =>
+    onCanvasInteract('mousedown', event)
+  );
 
-  CANVAS.addEventListener('mousemove', event => {
-    onCanvasInteract('mousemove', event);
-  })
+  CANVAS.addEventListener('mousemove', event =>
+    onCanvasInteract('mousemove', event)
+  );
 
-  CANVAS.addEventListener('mouseup', event => {
-    onCanvasInteract('mouseup', event);
-  });
+  CANVAS.addEventListener('mouseup', event =>
+    onCanvasInteract('mouseup', event)
+  );
 
-  CANVAS.addEventListener('click', event => {
-    onCanvasInteract('click', event);
-  });
+  CANVAS.addEventListener('mouseout', event =>
+    onCanvasInteract('mouseout', event)
+  );
+
+  CANVAS.addEventListener('mouseover', event =>
+    onCanvasInteract('mouseover', event)
+  );
+
+  CANVAS.addEventListener('click', event =>
+    onCanvasInteract('click', event)
+  );
 
 
 }
