@@ -22,7 +22,7 @@
     <!--[if IE]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="container">
+    <div class="container-fluid canvas-background">
       <h1>Battle Map</h1>
       <canvas id="canvas" class="main-canvas" width="800" height="600"></canvas>
     </div>
@@ -31,6 +31,11 @@
         <h2>Control Panel</h2>
         <div class="create-token">
           <h3>Create Token</h3>
+          <div id="token_preview" class="token-preview"></div>
+          <input id="token_letter" class="token-field token-letter" placeholder="Letter" type="text" />
+          <input id="token_color" class="token-field token-color" placeholder="Color" type="text" />
+          <br/>
+          <button id="token_create" class="token-create">Create Token</button>
         </div>
         <div class="draw">
           <h3>Draw</h3>

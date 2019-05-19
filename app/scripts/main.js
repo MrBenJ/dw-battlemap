@@ -1,7 +1,11 @@
 class MapState {
   constructor() {
 
-    this.state = {};
+    this.state = {
+      mode: '',
+      color: '',
+      currentToken: null
+    };
 
     this.setColor = this.setColor.bind(this);
     this.getState = this.getState.bind(this);
@@ -15,6 +19,7 @@ class MapState {
   getState() {
     return this.state;
   }
+
 }
 const app = new MapState();
 const CANVAS = document.getElementById('canvas');
@@ -58,6 +63,14 @@ function draw() {
 
 function onCanvasInteract(eventType, DOMEvent) {
   console.log(eventType);
+}
+
+function clearToken() {
+  app.state.currentToken = null;
+}
+
+function setToken() {
+
 }
 
 function init() {
