@@ -44,6 +44,7 @@ function clearColorSelection() {
 
 /**
  * Sets the app's state to "draw" plus the color to draw with
+ * @context {HTMLDivElement}
  * @return {undefined}
  */
 function selectColor() {
@@ -83,6 +84,10 @@ function init() {
   CANVAS.addEventListener('mousedown', event => {
     onCanvasInteract('mousedown', event);
   });
+
+  CANVAS.addEventListener('mousemove', event => {
+    onCanvasInteract('mousemove', event);
+  })
 
   CANVAS.addEventListener('mouseup', event => {
     onCanvasInteract('mouseup', event);
