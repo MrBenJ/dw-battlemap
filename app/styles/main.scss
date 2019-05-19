@@ -7,10 +7,75 @@
 
 
 body {
+  margin: 0;
+  padding: 0;
 
 }
 
 .main-canvas {
   margin: 0 auto;
   display: block;
+}
+
+.control-panel {
+  width: 100%;
+  background-color: #73c0ee;
+}
+
+.create-token, .draw {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+
+.create-token {
+  width: 50%;
+  border-right: 1px solid black;
+}
+
+.draw {
+  width: 40%;
+}
+
+.color {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border: 2px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &.selected {
+    border: 2px solid white;
+  }
+
+  &-white {
+    background-color: white;
+  }
+
+  &-black {
+    background-color: black;
+  }
+
+  &-green {
+    background-color: green;
+  }
+
+  &-blue {
+    background-color: blue;
+  }
+
+  &-red {
+    background-color: red;
+  }
+
+  &-orange {
+    background-color: orange;
+  }
+
+  &-clear {
+    vertical-align: top;
+    span { vertical-align: sub; }
+  }
+
 }
